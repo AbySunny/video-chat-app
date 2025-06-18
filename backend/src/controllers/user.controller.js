@@ -13,6 +13,7 @@ export async function getRecommendedUsers(req, res) {
         { isOnboarded: true },
       ],
     });
+    console.log("Recommended users:", recommendedUsers);
     res.status(200).json(recommendedUsers);
   } catch (error) {
     console.error("Error in getRecommendedUsers controller", error.message);
@@ -143,6 +144,15 @@ export async function getOutgoingFriendReqs(req, res) {
     res.status(200).json(outgoingRequests);
   } catch (error) {
     console.log("Error in getOutgoingFriendReqs controller", error.message);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+}
+
+export async function getAllUsers(req, res) {
+  try {
+    const users = await User.find({});
+    res.status(200).json(users);
+  } catch (error) {
     res.status(500).json({ message: "Internal Server Error" });
   }
 }

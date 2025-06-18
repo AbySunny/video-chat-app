@@ -28,7 +28,7 @@ const AiPage = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 h-full">
       <h1 className="text-3xl font-bold mb-4">AI Chat</h1>
       <form onSubmit={handleSubmit} className="mb-4">
         <input
@@ -47,9 +47,49 @@ const AiPage = () => {
         </button>
       </form>
       {aiResponse && (
-        <div className="bg-gray-100 rounded-md p-4">
+        <div className="bg-gray-100 rounded-md p-4 w-full">
           <p className="font-semibold">AI Response:</p>
-          <p>{aiResponse}</p>
+          {aiResponse
+            .split(/\n\s*\n/) // Split by double line breaks for blocks
+            .map((block, idx) => {
+              const trimmed = block.trim();
+
+              // Markdown Headings
+              if (/^###\s+/.test(trimmed)) {
+                return <h3 key={idx} className="text-lg font-semibold mb-2">{trimmed.replace(/^###\s+/, '')}</h3>;
+              }
+              if (/^##\s+/.test(trimmed)) {
+                return <h2 key={idx} className="text-xl font-bold mb-2">{trimmed.replace(/^##\s+/, '')}</h2>;
+              }
+              if (/^#\s+/.test(trimmed)) {
+                return <h1 key={idx} className="text-2xl font-bold mb-2">{trimmed.replace(/^#\s+/, '')}</h1>;
+              }
+
+              // Email-style pseudo-headings (Subject:, Agenda:, From:, To:)
+              if (/^(Subject|Agenda|From|To|Cc|Bcc):/i.test(trimmed)) {
+                return <p key={idx} className="font-semibold mb-2">{trimmed}</p>;
+              }
+
+              // Lists
+              if (trimmed.match(/^[-*•]\s+/m)) {
+                return (
+                  <ul key={idx} className="list-disc pl-6 mb-2">
+                    {trimmed.split('\n').map((item, i) =>
+                      item.trim().match(/^[-*•]\s+/) ? (
+                        <li key={i}>{item.replace(/^[-*•]\s+/, '')}</li>
+                      ) : null
+                    )}
+                  </ul>
+                );
+              }
+
+              // Paragraph
+              return (
+                <p key={idx} className="mb-2">
+                  {block.replace(/\n/g, ' ')}
+                </p>
+              );
+            })}
         </div>
       )}
     </div>
@@ -86,7 +126,7 @@ const AiPageFrontEnd = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 h-full">
       <h1 className="text-3xl font-bold mb-4">AI Chat (Frontend Simulation)</h1>
       <p className="mb-4 text-gray-700">
         This is a frontend simulation of an AI chat.  For real AI functionality, a backend with an AI model integration is necessary.

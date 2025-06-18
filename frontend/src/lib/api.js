@@ -36,6 +36,7 @@ export async function getUserFriends() {
 
 export async function getRecommendedUsers() {
   const response = await axiosInstance.get("/users");
+  console.log(response.data);
   return response.data;
 }
 
@@ -61,5 +62,10 @@ export async function acceptFriendRequest(requestId) {
 
 export async function getStreamToken() {
   const response = await axiosInstance.get("/chat/token");
+  return response.data;
+}
+
+export async function getAllUsers() {
+  const response = await axiosInstance.get("/users/all");
   return response.data;
 }
