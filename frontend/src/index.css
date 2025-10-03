@@ -2,11 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Stream Chat Theme Integration */
 .str-chat__channel {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom, #c9e8c9, #b7e7bb);
+  background: hsl(var(--b1)) !important;
   height: 100%;
 }
 
@@ -15,14 +16,108 @@
   width: 100%;
   height: 80% !important;
   margin: 0 auto !important;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  background: hsl(var(--b1)) !important;
+  /* Subtle border for light themes */
+  border: 1px solid hsl(var(--b3) / 0.3) !important;
+}
+
+/* Dark theme borders - Subtle light colored borders */
+[data-theme="dark"] .str-chat__container,
+[data-theme="forest"] .str-chat__container,
+[data-theme="synthwave"] .str-chat__container,
+[data-theme="halloween"] .str-chat__container,
+[data-theme="aqua"] .str-chat__container,
+[data-theme="lofi"] .str-chat__container,
+[data-theme="black"] .str-chat__container,
+[data-theme="luxury"] .str-chat__container,
+[data-theme="dracula"] .str-chat__container,
+[data-theme="acid"] .str-chat__container,
+[data-theme="night"] .str-chat__container,
+[data-theme="coffee"] .str-chat__container,
+[data-theme="dim"] .str-chat__container,
+[data-theme="sunset"] .str-chat__container {
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Light theme borders - Subtle dark colored borders */
+[data-theme="light"] .str-chat__container,
+[data-theme="cupcake"] .str-chat__container,
+[data-theme="bumblebee"] .str-chat__container,
+[data-theme="emerald"] .str-chat__container,
+[data-theme="corporate"] .str-chat__container,
+[data-theme="retro"] .str-chat__container,
+[data-theme="valentine"] .str-chat__container,
+[data-theme="garden"] .str-chat__container,
+[data-theme="pastel"] .str-chat__container,
+[data-theme="fantasy"] .str-chat__container,
+[data-theme="wireframe"] .str-chat__container,
+[data-theme="cmyk"] .str-chat__container,
+[data-theme="autumn"] .str-chat__container,
+[data-theme="business"] .str-chat__container,
+[data-theme="lemonade"] .str-chat__container,
+[data-theme="winter"] .str-chat__container,
+[data-theme="nord"] .str-chat__container {
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Window Component */
+.str-chat__window {
+  background: hsl(var(--b1)) !important;
+}
+
+.str-chat__window-header {
+  background: hsl(var(--b2)) !important;
+  border-bottom: 1px solid hsl(var(--b3)) !important;
 }
 
 .str-chat__list {
-  background-color: #ffffff;
+  background-color: hsl(var(--b1)) !important;
   padding: 12px;
+  border-top: 1px solid hsl(var(--b3) / 0.2) !important;
+}
+
+/* Dark theme message list borders - Match container border color */
+[data-theme="dark"] .str-chat__list,
+[data-theme="forest"] .str-chat__list,
+[data-theme="synthwave"] .str-chat__list,
+[data-theme="halloween"] .str-chat__list,
+[data-theme="aqua"] .str-chat__list,
+[data-theme="lofi"] .str-chat__list,
+[data-theme="black"] .str-chat__list,
+[data-theme="luxury"] .str-chat__list,
+[data-theme="dracula"] .str-chat__list,
+[data-theme="acid"] .str-chat__list,
+[data-theme="night"] .str-chat__list,
+[data-theme="coffee"] .str-chat__list,
+[data-theme="dim"] .str-chat__list,
+[data-theme="sunset"] .str-chat__list {
+  border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Light theme message list borders - Match container border color */
+[data-theme="light"] .str-chat__list,
+[data-theme="cupcake"] .str-chat__list,
+[data-theme="bumblebee"] .str-chat__list,
+[data-theme="emerald"] .str-chat__list,
+[data-theme="corporate"] .str-chat__list,
+[data-theme="retro"] .str-chat__list,
+[data-theme="valentine"] .str-chat__list,
+[data-theme="garden"] .str-chat__list,
+[data-theme="pastel"] .str-chat__list,
+[data-theme="fantasy"] .str-chat__list,
+[data-theme="wireframe"] .str-chat__list,
+[data-theme="cmyk"] .str-chat__list,
+[data-theme="autumn"] .str-chat__list,
+[data-theme="business"] .str-chat__list,
+[data-theme="lemonade"] .str-chat__list,
+[data-theme="winter"] .str-chat__list,
+[data-theme="nord"] .str-chat__list {
+  border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
 
 .str-chat__list-notifications {
@@ -30,5 +125,758 @@
 }
 
 .str-chat__message-input {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid hsl(var(--b3) / 0.2) !important;
+  background: hsl(var(--b1)) !important;
+}
+
+/* Dark theme message input borders - Subtle light colored borders */
+[data-theme="dark"] .str-chat__message-input,
+[data-theme="forest"] .str-chat__message-input,
+[data-theme="synthwave"] .str-chat__message-input,
+[data-theme="halloween"] .str-chat__message-input,
+[data-theme="aqua"] .str-chat__message-input,
+[data-theme="lofi"] .str-chat__message-input,
+[data-theme="black"] .str-chat__message-input,
+[data-theme="luxury"] .str-chat__message-input,
+[data-theme="dracula"] .str-chat__message-input,
+[data-theme="acid"] .str-chat__message-input,
+[data-theme="night"] .str-chat__message-input,
+[data-theme="coffee"] .str-chat__message-input,
+[data-theme="dim"] .str-chat__message-input,
+[data-theme="sunset"] .str-chat__message-input {
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Light theme message input borders - Subtle dark colored borders */
+[data-theme="light"] .str-chat__message-input,
+[data-theme="cupcake"] .str-chat__message-input,
+[data-theme="bumblebee"] .str-chat__message-input,
+[data-theme="emerald"] .str-chat__message-input,
+[data-theme="corporate"] .str-chat__message-input,
+[data-theme="retro"] .str-chat__message-input,
+[data-theme="valentine"] .str-chat__message-input,
+[data-theme="garden"] .str-chat__message-input,
+[data-theme="pastel"] .str-chat__message-input,
+[data-theme="fantasy"] .str-chat__message-input,
+[data-theme="wireframe"] .str-chat__message-input,
+[data-theme="cmyk"] .str-chat__message-input,
+[data-theme="autumn"] .str-chat__message-input,
+[data-theme="business"] .str-chat__message-input,
+[data-theme="lemonade"] .str-chat__message-input,
+[data-theme="winter"] .str-chat__message-input,
+[data-theme="nord"] .str-chat__message-input {
+  border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+.str-chat__message-input-form {
+  background: hsl(var(--b1)) !important;
+}
+
+.str-chat__message-input-form-container {
+  background: hsl(var(--b1)) !important;
+}
+
+/* Channel Header Styling */
+.str-chat__channel-header {
+  background: hsl(var(--b2)) !important;
+  border-bottom: none !important;
+  color: hsl(var(--bc)) !important;
+  box-shadow: none !important;
+}
+
+/* Remove all header borders for all themes */
+[data-theme="dark"] .str-chat__channel-header,
+[data-theme="forest"] .str-chat__channel-header,
+[data-theme="synthwave"] .str-chat__channel-header,
+[data-theme="halloween"] .str-chat__channel-header,
+[data-theme="aqua"] .str-chat__channel-header,
+[data-theme="lofi"] .str-chat__channel-header,
+[data-theme="black"] .str-chat__channel-header,
+[data-theme="luxury"] .str-chat__channel-header,
+[data-theme="dracula"] .str-chat__channel-header,
+[data-theme="acid"] .str-chat__channel-header,
+[data-theme="night"] .str-chat__channel-header,
+[data-theme="coffee"] .str-chat__channel-header,
+[data-theme="dim"] .str-chat__channel-header,
+[data-theme="sunset"] .str-chat__channel-header,
+[data-theme="light"] .str-chat__channel-header,
+[data-theme="cupcake"] .str-chat__channel-header,
+[data-theme="bumblebee"] .str-chat__channel-header,
+[data-theme="emerald"] .str-chat__channel-header,
+[data-theme="corporate"] .str-chat__channel-header,
+[data-theme="retro"] .str-chat__channel-header,
+[data-theme="valentine"] .str-chat__channel-header,
+[data-theme="garden"] .str-chat__channel-header,
+[data-theme="pastel"] .str-chat__channel-header,
+[data-theme="fantasy"] .str-chat__channel-header,
+[data-theme="wireframe"] .str-chat__channel-header,
+[data-theme="cmyk"] .str-chat__channel-header,
+[data-theme="autumn"] .str-chat__channel-header,
+[data-theme="business"] .str-chat__channel-header,
+[data-theme="lemonade"] .str-chat__channel-header,
+[data-theme="winter"] .str-chat__channel-header,
+[data-theme="nord"] .str-chat__channel-header {
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+/* Additional Stream Chat components that might create lines */
+.str-chat__window-header {
+  border-bottom: none !important;
+}
+
+/* Dark theme window header borders - Match container border color */
+[data-theme="dark"] .str-chat__window-header,
+[data-theme="forest"] .str-chat__window-header,
+[data-theme="synthwave"] .str-chat__window-header,
+[data-theme="halloween"] .str-chat__window-header,
+[data-theme="aqua"] .str-chat__window-header,
+[data-theme="lofi"] .str-chat__window-header,
+[data-theme="black"] .str-chat__window-header,
+[data-theme="luxury"] .str-chat__window-header,
+[data-theme="dracula"] .str-chat__window-header,
+[data-theme="acid"] .str-chat__window-header,
+[data-theme="night"] .str-chat__window-header,
+[data-theme="coffee"] .str-chat__window-header,
+[data-theme="dim"] .str-chat__window-header,
+[data-theme="sunset"] .str-chat__window-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Light theme window header borders - Match container border color */
+[data-theme="light"] .str-chat__window-header,
+[data-theme="cupcake"] .str-chat__window-header,
+[data-theme="bumblebee"] .str-chat__window-header,
+[data-theme="emerald"] .str-chat__window-header,
+[data-theme="corporate"] .str-chat__window-header,
+[data-theme="retro"] .str-chat__window-header,
+[data-theme="valentine"] .str-chat__window-header,
+[data-theme="garden"] .str-chat__window-header,
+[data-theme="pastel"] .str-chat__window-header,
+[data-theme="fantasy"] .str-chat__window-header,
+[data-theme="wireframe"] .str-chat__window-header,
+[data-theme="cmyk"] .str-chat__window-header,
+[data-theme="autumn"] .str-chat__window-header,
+[data-theme="business"] .str-chat__window-header,
+[data-theme="lemonade"] .str-chat__window-header,
+[data-theme="winter"] .str-chat__window-header,
+[data-theme="nord"] .str-chat__window-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.str-chat__channel-header-title {
+  color: hsl(var(--bc)) !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+.str-chat__channel-header-subtitle {
+  color: hsl(var(--bc) / 0.9) !important;
+  font-weight: 500 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* COMPREHENSIVE DARK THEME SOLUTION - Force white text for ALL dark themes */
+/* Based on theme analysis, these themes have dark backgrounds and need white text */
+
+/* Universal dark theme detection - Force white text for all dark themes */
+[data-theme="dark"] .str-chat__channel-header *,
+[data-theme="forest"] .str-chat__channel-header *,
+[data-theme="synthwave"] .str-chat__channel-header *,
+[data-theme="halloween"] .str-chat__channel-header *,
+[data-theme="aqua"] .str-chat__channel-header *,
+[data-theme="lofi"] .str-chat__channel-header *,
+[data-theme="black"] .str-chat__channel-header *,
+[data-theme="luxury"] .str-chat__channel-header *,
+[data-theme="dracula"] .str-chat__channel-header *,
+[data-theme="acid"] .str-chat__channel-header *,
+[data-theme="night"] .str-chat__channel-header *,
+[data-theme="coffee"] .str-chat__channel-header *,
+[data-theme="dim"] .str-chat__channel-header *,
+[data-theme="sunset"] .str-chat__channel-header * {
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+  font-weight: 600 !important;
+}
+
+/* Specific targeting for header titles in dark themes */
+[data-theme="dark"] .str-chat__channel-header-title,
+[data-theme="forest"] .str-chat__channel-header-title,
+[data-theme="synthwave"] .str-chat__channel-header-title,
+[data-theme="halloween"] .str-chat__channel-header-title,
+[data-theme="aqua"] .str-chat__channel-header-title,
+[data-theme="lofi"] .str-chat__channel-header-title,
+[data-theme="black"] .str-chat__channel-header-title,
+[data-theme="luxury"] .str-chat__channel-header-title,
+[data-theme="dracula"] .str-chat__channel-header-title,
+[data-theme="acid"] .str-chat__channel-header-title,
+[data-theme="night"] .str-chat__channel-header-title,
+[data-theme="coffee"] .str-chat__channel-header-title,
+[data-theme="dim"] .str-chat__channel-header-title,
+[data-theme="sunset"] .str-chat__channel-header-title {
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+}
+
+/* Specific targeting for header subtitles in dark themes */
+[data-theme="dark"] .str-chat__channel-header-subtitle,
+[data-theme="forest"] .str-chat__channel-header-subtitle,
+[data-theme="synthwave"] .str-chat__channel-header-subtitle,
+[data-theme="halloween"] .str-chat__channel-header-subtitle,
+[data-theme="aqua"] .str-chat__channel-header-subtitle,
+[data-theme="lofi"] .str-chat__channel-header-subtitle,
+[data-theme="black"] .str-chat__channel-header-subtitle,
+[data-theme="luxury"] .str-chat__channel-header-subtitle,
+[data-theme="dracula"] .str-chat__channel-header-subtitle,
+[data-theme="acid"] .str-chat__channel-header-subtitle,
+[data-theme="night"] .str-chat__channel-header-subtitle,
+[data-theme="coffee"] .str-chat__channel-header-subtitle,
+[data-theme="dim"] .str-chat__channel-header-subtitle,
+[data-theme="sunset"] .str-chat__channel-header-subtitle {
+  color: #e5e5e5 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+}
+
+/* Target header info section for dark themes */
+[data-theme="dark"] .str-chat__channel-header-info *,
+[data-theme="forest"] .str-chat__channel-header-info *,
+[data-theme="synthwave"] .str-chat__channel-header-info *,
+[data-theme="halloween"] .str-chat__channel-header-info *,
+[data-theme="aqua"] .str-chat__channel-header-info *,
+[data-theme="lofi"] .str-chat__channel-header-info *,
+[data-theme="black"] .str-chat__channel-header-info *,
+[data-theme="luxury"] .str-chat__channel-header-info *,
+[data-theme="dracula"] .str-chat__channel-header-info *,
+[data-theme="acid"] .str-chat__channel-header-info *,
+[data-theme="night"] .str-chat__channel-header-info *,
+[data-theme="coffee"] .str-chat__channel-header-info *,
+[data-theme="dim"] .str-chat__channel-header-info *,
+[data-theme="sunset"] .str-chat__channel-header-info * {
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Default light theme behavior */
+.str-chat__channel-header * {
+  color: hsl(var(--bc)) !important;
+}
+
+.str-chat__channel-header h1,
+.str-chat__channel-header h2,
+.str-chat__channel-header h3,
+.str-chat__channel-header h4,
+.str-chat__channel-header h5,
+.str-chat__channel-header h6 {
+  color: hsl(var(--bc)) !important;
+}
+
+.str-chat__channel-header span,
+.str-chat__channel-header div,
+.str-chat__channel-header p {
+  color: hsl(var(--bc)) !important;
+}
+
+.str-chat__channel-header-info {
+  background: transparent !important;
+}
+
+.str-chat__channel-header-info .str-chat__avatar {
+  background: hsl(var(--b4)) !important;
+}
+
+.str-chat__channel-header-info .str-chat__avatar-image {
+  background: hsl(var(--b4)) !important;
+}
+
+/* Header info text styling */
+.str-chat__channel-header-info .str-chat__channel-header-title {
+  color: hsl(var(--bc)) !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+.str-chat__channel-header-info .str-chat__channel-header-subtitle {
+  color: hsl(var(--bc) / 0.9) !important;
+  font-weight: 500 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Force all text elements in header info to use theme colors */
+.str-chat__channel-header-info * {
+  color: hsl(var(--bc)) !important;
+}
+
+.str-chat__channel-header-info h1,
+.str-chat__channel-header-info h2,
+.str-chat__channel-header-info h3,
+.str-chat__channel-header-info h4,
+.str-chat__channel-header-info h5,
+.str-chat__channel-header-info h6,
+.str-chat__channel-header-info span,
+.str-chat__channel-header-info div,
+.str-chat__channel-header-info p {
+  color: hsl(var(--bc)) !important;
+}
+
+/* Channel Header Actions */
+.str-chat__channel-header-actions {
+  background: transparent !important;
+}
+
+.str-chat__channel-header-actions button {
+  background: hsl(var(--b3)) !important;
+  color: hsl(var(--bc)) !important;
+  border: 1px solid hsl(var(--b4)) !important;
+}
+
+.str-chat__channel-header-actions button:hover {
+  background: hsl(var(--b4)) !important;
+  color: hsl(var(--bc)) !important;
+}
+
+/* Channel Header Avatar */
+.str-chat__avatar {
+  background: hsl(var(--b3)) !important;
+}
+
+.str-chat__avatar-image {
+  background: hsl(var(--b3)) !important;
+}
+
+/* Message Input Styling */
+.str-chat__message-input-wrapper {
+  background: hsl(var(--b1));
+}
+
+.str-chat__message-input-textarea {
+  background: hsl(var(--b2));
+  color: hsl(var(--bc));
+  border: 1px solid hsl(var(--b3));
+}
+
+.str-chat__message-input-textarea:focus {
+  border-color: hsl(var(--p)) !important;
+  outline: none !important;
+}
+
+.str-chat__message-input-textarea::placeholder {
+  color: hsl(var(--bc) / 0.5) !important;
+}
+
+/* Message Input Buttons */
+.str-chat__message-input-button {
+  background: hsl(var(--p)) !important;
+  color: hsl(var(--pc)) !important;
+  border: none !important;
+}
+
+.str-chat__message-input-button:hover {
+  background: hsl(var(--pf)) !important;
+  color: hsl(var(--pc)) !important;
+}
+
+.str-chat__message-input-button:disabled {
+  background: hsl(var(--b3)) !important;
+  color: hsl(var(--bc) / 0.5) !important;
+}
+
+/* Attachment Button */
+.str-chat__message-input-attachment-button {
+  background: hsl(var(--b3)) !important;
+  color: hsl(var(--bc)) !important;
+  border: 1px solid hsl(var(--b4)) !important;
+}
+
+.str-chat__message-input-attachment-button:hover {
+  background: hsl(var(--b4)) !important;
+  color: hsl(var(--bc)) !important;
+}
+
+/* Message Styling */
+.str-chat__message {
+  background: transparent;
+}
+
+.str-chat__message--me .str-chat__message-inner {
+  background: hsl(var(--p));
+  color: hsl(var(--pc));
+}
+
+.str-chat__message--other .str-chat__message-inner {
+  background: hsl(var(--b2));
+  color: hsl(var(--bc));
+}
+
+/* Thread Styling */
+.str-chat__thread {
+  background: hsl(var(--b1));
+  border-left: 1px solid hsl(var(--b3));
+}
+
+.str-chat__thread-header {
+  background: hsl(var(--b2));
+  border-bottom: 1px solid hsl(var(--b3));
+}
+
+/* Scrollbar Styling */
+.str-chat__list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.str-chat__list::-webkit-scrollbar-track {
+  background: hsl(var(--b2));
+}
+
+.str-chat__list::-webkit-scrollbar-thumb {
+  background: hsl(var(--b3));
+  border-radius: 3px;
+}
+
+.str-chat__list::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--b4));
+}
+
+/* Additional Stream Chat Components */
+.str-chat__typing-indicator {
+  background: hsl(var(--b2)) !important;
+  color: hsl(var(--bc)) !important;
+}
+
+.str-chat__typing-indicator-dot {
+  background: hsl(var(--bc) / 0.5) !important;
+}
+
+/* Thread List */
+.str-chat__thread-list {
+  background: hsl(var(--b1)) !important;
+}
+
+.str-chat__thread-list-item {
+  background: hsl(var(--b2)) !important;
+  color: hsl(var(--bc)) !important;
+  border-bottom: 1px solid hsl(var(--b3)) !important;
+}
+
+.str-chat__thread-list-item:hover {
+  background: hsl(var(--b3)) !important;
+}
+
+/* Loading States */
+.str-chat__loading {
+  background: hsl(var(--b1)) !important;
+  color: hsl(var(--bc)) !important;
+}
+
+/* Error States */
+.str-chat__error {
+  background: hsl(var(--er)) !important;
+  color: hsl(var(--erc)) !important;
+}
+
+/* Success States */
+.str-chat__success {
+  background: hsl(var(--su)) !important;
+  color: hsl(var(--suc)) !important;
+}
+
+/* Message Link Styling */
+.str-chat__message a {
+  color: inherit !important;
+  text-decoration: underline !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+}
+
+.str-chat__message a:hover {
+  opacity: 0.8 !important;
+  text-decoration: underline !important;
+}
+
+/* Ensure links are visible in message bubbles */
+.str-chat__message--me a {
+  color: hsl(var(--pc)) !important;
+  text-decoration: underline !important;
+}
+
+.str-chat__message--other a {
+  color: hsl(var(--bc)) !important;
+  text-decoration: underline !important;
+}
+
+/* Additional header text overrides */
+.str-chat__channel-header .str-chat__channel-header-title,
+.str-chat__channel-header .str-chat__channel-header-subtitle,
+.str-chat__channel-header .str-chat__channel-header-info .str-chat__channel-header-title,
+.str-chat__channel-header .str-chat__channel-header-info .str-chat__channel-header-subtitle {
+  color: hsl(var(--bc)) !important;
+}
+
+/* Override any inline styles or other CSS that might be affecting header text */
+.str-chat__channel-header [class*="title"],
+.str-chat__channel-header [class*="subtitle"],
+.str-chat__channel-header [class*="name"],
+.str-chat__channel-header [class*="info"] {
+  color: hsl(var(--bc)) !important;
+}
+
+/* Ensure header text changes with theme by using CSS custom properties */
+.str-chat__channel-header {
+  --header-text-color: hsl(var(--bc));
+  --header-subtitle-color: hsl(var(--bc) / 0.9);
+}
+
+.str-chat__channel-header * {
+  color: var(--header-text-color) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+.str-chat__channel-header .str-chat__channel-header-subtitle {
+  color: var(--header-subtitle-color) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* AGGRESSIVE DARK THEME FIXES - Force light text colors */
+[data-theme="dark"] .str-chat__channel-header *,
+[data-theme="night"] .str-chat__channel-header *,
+[data-theme="dracula"] .str-chat__channel-header *,
+[data-theme="synthwave"] .str-chat__channel-header *,
+[data-theme="cyberpunk"] .str-chat__channel-header *,
+[data-theme="lofi"] .str-chat__channel-header *,
+[data-theme="black"] .str-chat__channel-header *,
+[data-theme="luxury"] .str-chat__channel-header *,
+[data-theme="dim"] .str-chat__channel-header *,
+[data-theme="sunset"] .str-chat__channel-header * {
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Specific targeting for header titles in dark themes */
+[data-theme="dark"] .str-chat__channel-header-title,
+[data-theme="night"] .str-chat__channel-header-title,
+[data-theme="dracula"] .str-chat__channel-header-title,
+[data-theme="synthwave"] .str-chat__channel-header-title,
+[data-theme="cyberpunk"] .str-chat__channel-header-title,
+[data-theme="lofi"] .str-chat__channel-header-title,
+[data-theme="black"] .str-chat__channel-header-title,
+[data-theme="luxury"] .str-chat__channel-header-title,
+[data-theme="dim"] .str-chat__channel-header-title,
+[data-theme="sunset"] .str-chat__channel-header-title {
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+}
+
+/* Specific targeting for header subtitles in dark themes */
+[data-theme="dark"] .str-chat__channel-header-subtitle,
+[data-theme="night"] .str-chat__channel-header-subtitle,
+[data-theme="dracula"] .str-chat__channel-header-subtitle,
+[data-theme="synthwave"] .str-chat__channel-header-subtitle,
+[data-theme="cyberpunk"] .str-chat__channel-header-subtitle,
+[data-theme="lofi"] .str-chat__channel-header-subtitle,
+[data-theme="black"] .str-chat__channel-header-subtitle,
+[data-theme="luxury"] .str-chat__channel-header-subtitle,
+[data-theme="dim"] .str-chat__channel-header-subtitle,
+[data-theme="sunset"] .str-chat__channel-header-subtitle {
+  color: #e5e5e5 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+}
+
+/* Target all possible text elements in header info section for dark themes */
+[data-theme="dark"] .str-chat__channel-header-info *,
+[data-theme="night"] .str-chat__channel-header-info *,
+[data-theme="dracula"] .str-chat__channel-header-info *,
+[data-theme="synthwave"] .str-chat__channel-header-info *,
+[data-theme="cyberpunk"] .str-chat__channel-header-info *,
+[data-theme="lofi"] .str-chat__channel-header-info *,
+[data-theme="black"] .str-chat__channel-header-info *,
+[data-theme="luxury"] .str-chat__channel-header-info *,
+[data-theme="dim"] .str-chat__channel-header-info *,
+[data-theme="sunset"] .str-chat__channel-header-info * {
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Ensure header text is always visible */
+.str-chat__channel-header-title,
+.str-chat__channel-header-subtitle {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* ULTRA-AGGRESSIVE DARK THEME OVERRIDES - Target every possible element */
+[data-theme="dark"] .str-chat__channel-header h1,
+[data-theme="dark"] .str-chat__channel-header h2,
+[data-theme="dark"] .str-chat__channel-header h3,
+[data-theme="dark"] .str-chat__channel-header h4,
+[data-theme="dark"] .str-chat__channel-header h5,
+[data-theme="dark"] .str-chat__channel-header h6,
+[data-theme="dark"] .str-chat__channel-header p,
+[data-theme="dark"] .str-chat__channel-header span,
+[data-theme="dark"] .str-chat__channel-header div,
+[data-theme="dark"] .str-chat__channel-header strong,
+[data-theme="dark"] .str-chat__channel-header b,
+[data-theme="dark"] .str-chat__channel-header em,
+[data-theme="dark"] .str-chat__channel-header i {
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+[data-theme="night"] .str-chat__channel-header h1,
+[data-theme="night"] .str-chat__channel-header h2,
+[data-theme="night"] .str-chat__channel-header h3,
+[data-theme="night"] .str-chat__channel-header h4,
+[data-theme="night"] .str-chat__channel-header h5,
+[data-theme="night"] .str-chat__channel-header h6,
+[data-theme="night"] .str-chat__channel-header p,
+[data-theme="night"] .str-chat__channel-header span,
+[data-theme="night"] .str-chat__channel-header div,
+[data-theme="night"] .str-chat__channel-header strong,
+[data-theme="night"] .str-chat__channel-header b,
+[data-theme="night"] .str-chat__channel-header em,
+[data-theme="night"] .str-chat__channel-header i {
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+[data-theme="dracula"] .str-chat__channel-header h1,
+[data-theme="dracula"] .str-chat__channel-header h2,
+[data-theme="dracula"] .str-chat__channel-header h3,
+[data-theme="dracula"] .str-chat__channel-header h4,
+[data-theme="dracula"] .str-chat__channel-header h5,
+[data-theme="dracula"] .str-chat__channel-header h6,
+[data-theme="dracula"] .str-chat__channel-header p,
+[data-theme="dracula"] .str-chat__channel-header span,
+[data-theme="dracula"] .str-chat__channel-header div,
+[data-theme="dracula"] .str-chat__channel-header strong,
+[data-theme="dracula"] .str-chat__channel-header b,
+[data-theme="dracula"] .str-chat__channel-header em,
+[data-theme="dracula"] .str-chat__channel-header i {
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Force white text for ALL dark themes using attribute selectors */
+[data-theme*="dark"] .str-chat__channel-header *,
+[data-theme*="night"] .str-chat__channel-header *,
+[data-theme*="dracula"] .str-chat__channel-header *,
+[data-theme*="synthwave"] .str-chat__channel-header *,
+[data-theme*="cyberpunk"] .str-chat__channel-header *,
+[data-theme*="lofi"] .str-chat__channel-header *,
+[data-theme*="black"] .str-chat__channel-header *,
+[data-theme*="luxury"] .str-chat__channel-header *,
+[data-theme*="dim"] .str-chat__channel-header *,
+[data-theme*="sunset"] .str-chat__channel-header * {
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Additional fallback for any remaining dark themes */
+.str-chat__channel-header * {
+  color: hsl(var(--bc)) !important;
+}
+
+/* Override with white text when background is dark */
+.str-chat__channel-header[style*="background"] *,
+.str-chat__channel-header[style*="Background"] * {
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* NUCLEAR OPTION - Force white text on ALL Stream Chat header elements */
+.str-chat__channel-header,
+.str-chat__channel-header *,
+.str-chat__channel-header-info,
+.str-chat__channel-header-info *,
+.str-chat__channel-header-actions,
+.str-chat__channel-header-actions * {
+  color: hsl(var(--bc)) !important;
+}
+
+/* Override for dark themes - NUCLEAR OPTION */
+[data-theme="dark"] .str-chat__channel-header,
+[data-theme="dark"] .str-chat__channel-header *,
+[data-theme="dark"] .str-chat__channel-header-info,
+[data-theme="dark"] .str-chat__channel-header-info *,
+[data-theme="dark"] .str-chat__channel-header-actions,
+[data-theme="dark"] .str-chat__channel-header-actions *,
+[data-theme="night"] .str-chat__channel-header,
+[data-theme="night"] .str-chat__channel-header *,
+[data-theme="night"] .str-chat__channel-header-info,
+[data-theme="night"] .str-chat__channel-header-info *,
+[data-theme="night"] .str-chat__channel-header-actions,
+[data-theme="night"] .str-chat__channel-header-actions *,
+[data-theme="dracula"] .str-chat__channel-header,
+[data-theme="dracula"] .str-chat__channel-header *,
+[data-theme="dracula"] .str-chat__channel-header-info,
+[data-theme="dracula"] .str-chat__channel-header-info *,
+[data-theme="dracula"] .str-chat__channel-header-actions,
+[data-theme="dracula"] .str-chat__channel-header-actions * {
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Final fallback - target any element with text content */
+.str-chat__channel-header *:not(button):not(input):not(textarea):not(select) {
+  color: hsl(var(--bc)) !important;
+}
+
+[data-theme="dark"] .str-chat__channel-header *:not(button):not(input):not(textarea):not(select),
+[data-theme="night"] .str-chat__channel-header *:not(button):not(input):not(textarea):not(select),
+[data-theme="dracula"] .str-chat__channel-header *:not(button):not(input):not(textarea):not(select),
+[data-theme="forest"] .str-chat__channel-header *:not(button):not(input):not(textarea):not(select),
+[data-theme="synthwave"] .str-chat__channel-header *:not(button):not(input):not(textarea):not(select),
+[data-theme="halloween"] .str-chat__channel-header *:not(button):not(input):not(textarea):not(select),
+[data-theme="aqua"] .str-chat__channel-header *:not(button):not(input):not(textarea):not(select),
+[data-theme="lofi"] .str-chat__channel-header *:not(button):not(input):not(textarea):not(select),
+[data-theme="black"] .str-chat__channel-header *:not(button):not(input):not(textarea):not(select),
+[data-theme="luxury"] .str-chat__channel-header *:not(button):not(input):not(textarea):not(select),
+[data-theme="acid"] .str-chat__channel-header *:not(button):not(input):not(textarea):not(select),
+[data-theme="coffee"] .str-chat__channel-header *:not(button):not(input):not(textarea):not(select),
+[data-theme="dim"] .str-chat__channel-header *:not(button):not(input):not(textarea):not(select),
+[data-theme="sunset"] .str-chat__channel-header *:not(button):not(input):not(textarea):not(select) {
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* FINAL NUCLEAR OPTION - Force white text for ALL dark themes regardless of element type */
+[data-theme="dark"] .str-chat__channel-header,
+[data-theme="forest"] .str-chat__channel-header,
+[data-theme="synthwave"] .str-chat__channel-header,
+[data-theme="halloween"] .str-chat__channel-header,
+[data-theme="aqua"] .str-chat__channel-header,
+[data-theme="lofi"] .str-chat__channel-header,
+[data-theme="black"] .str-chat__channel-header,
+[data-theme="luxury"] .str-chat__channel-header,
+[data-theme="dracula"] .str-chat__channel-header,
+[data-theme="acid"] .str-chat__channel-header,
+[data-theme="night"] .str-chat__channel-header,
+[data-theme="coffee"] .str-chat__channel-header,
+[data-theme="dim"] .str-chat__channel-header,
+[data-theme="sunset"] .str-chat__channel-header {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .str-chat__channel-header *,
+[data-theme="forest"] .str-chat__channel-header *,
+[data-theme="synthwave"] .str-chat__channel-header *,
+[data-theme="halloween"] .str-chat__channel-header *,
+[data-theme="aqua"] .str-chat__channel-header *,
+[data-theme="lofi"] .str-chat__channel-header *,
+[data-theme="black"] .str-chat__channel-header *,
+[data-theme="luxury"] .str-chat__channel-header *,
+[data-theme="dracula"] .str-chat__channel-header *,
+[data-theme="acid"] .str-chat__channel-header *,
+[data-theme="night"] .str-chat__channel-header *,
+[data-theme="coffee"] .str-chat__channel-header *,
+[data-theme="dim"] .str-chat__channel-header *,
+[data-theme="sunset"] .str-chat__channel-header * {
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
 }

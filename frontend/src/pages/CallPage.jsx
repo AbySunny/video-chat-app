@@ -100,7 +100,19 @@ const CallContent = () => {
 
   const navigate = useNavigate();
 
-  if (callingState === CallingState.LEFT) return navigate("/");
+  // Handle call end - return to chat if available, otherwise go to home
+  if (callingState === CallingState.LEFT) {
+    const returnToChat = sessionStorage.getItem('returnToChat');
+    if (returnToChat) {
+      // Clear the stored URL and navigate back to chat
+      sessionStorage.removeItem('returnToChat');
+      window.location.href = returnToChat;
+    } else {
+      // Fallback to home if no chat URL is stored
+      navigate("/");
+    }
+    return null;
+  }
 
   return (
     <StreamTheme>

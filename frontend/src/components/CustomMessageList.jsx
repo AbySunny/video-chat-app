@@ -23,27 +23,108 @@ const translateWithGemini = async (text, targetLang) => {
   );
 };
 
-// Rotating icon component
+// Rotating icon component - Theme-aware circular arrows
 const CircularArrowsIcon = ({ spinning }) => (
   <img
     src="https://cdn-icons-png.flaticon.com/512/54/54303.png"
     alt="circular arrow"
     width={12}
     height={12}
+    className={`circular-arrows-icon transition-all duration-200 ${
+      spinning ? "animate-spin" : ""
+    }`}
     style={{
       display: "inline-block",
-      animation: spinning ? "spin-circular-arrow 1s linear infinite" : "none",
     }}
   />
 );
 
-// Add keyframes for spin animation (only once)
-if (!document.getElementById("spin-circular-arrow-style")) {
+// Add theme-aware styling for the circular arrows icon to match text color exactly
+if (!document.getElementById("circular-arrows-theme-style")) {
   const style = document.createElement("style");
-  style.id = "spin-circular-arrow-style";
+  style.id = "circular-arrows-theme-style";
   style.innerHTML = `
-    @keyframes spin-circular-arrow {
-      100% { transform: rotate(360deg); }
+    /* Make icon inherit the exact same color as the message text */
+    .circular-arrows-icon {
+      filter: none !important;
+      opacity: 1 !important;
+    }
+    
+    /* Light themes - match text color exactly */
+    [data-theme="light"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="cupcake"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="bumblebee"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="emerald"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="corporate"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="retro"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="valentine"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="garden"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="pastel"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="fantasy"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="wireframe"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="cmyk"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="autumn"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="business"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="lemonade"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="winter"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="nord"] .str-chat__message--me .circular-arrows-icon {
+      filter: invert(1) brightness(0) saturate(100%) !important;
+    }
+    
+    /* Dark themes - match text color exactly */
+    [data-theme="dark"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="forest"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="synthwave"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="halloween"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="aqua"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="lofi"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="black"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="luxury"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="dracula"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="acid"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="night"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="coffee"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="dim"] .str-chat__message--me .circular-arrows-icon,
+    [data-theme="sunset"] .str-chat__message--me .circular-arrows-icon {
+      filter: invert(0) brightness(1) saturate(100%) !important;
+    }
+    
+    /* For other messages (not sent by current user) */
+    [data-theme="light"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="cupcake"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="bumblebee"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="emerald"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="corporate"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="retro"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="valentine"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="garden"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="pastel"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="fantasy"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="wireframe"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="cmyk"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="autumn"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="business"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="lemonade"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="winter"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="nord"] .str-chat__message--other .circular-arrows-icon {
+      filter: invert(0) brightness(0) saturate(100%) !important;
+    }
+    
+    [data-theme="dark"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="forest"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="synthwave"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="halloween"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="aqua"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="lofi"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="black"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="luxury"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="dracula"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="acid"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="night"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="coffee"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="dim"] .str-chat__message--other .circular-arrows-icon,
+    [data-theme="sunset"] .str-chat__message--other .circular-arrows-icon {
+      filter: invert(1) brightness(1) saturate(100%) !important;
     }
   `;
   document.head.appendChild(style);
@@ -72,22 +153,53 @@ const isSameDay = (d1, d2) => {
 };
 
 function linkify(text) {
-  const urlRegex = /(https?:\/\/[^\s]+)/g;
-  return text.split(urlRegex).map((part, i) =>
-    urlRegex.test(part) ? (
-      <a
-        key={i}
-        href={part}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-blue-600 underline break-all"
-      >
-        {part}
-      </a>
-    ) : (
-      part
-    )
-  );
+  // Enhanced URL regex to catch more URL patterns including localhost
+  const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+|[a-zA-Z0-9.-]+\.(com|org|net|io|co|dev|localhost)[^\s]*|localhost:[0-9]+[^\s]*)/g;
+  
+  // Debug: log the text to see what we're working with
+  console.log('Linkify text:', text);
+  
+  return text.split(urlRegex).map((part, i) => {
+    if (urlRegex.test(part)) {
+      console.log('Found URL:', part);
+      
+      // Ensure the URL has a protocol
+      let href = part;
+      if (!part.startsWith('http://') && !part.startsWith('https://')) {
+        href = `https://${part}`;
+      }
+      
+      return (
+        <a
+          key={i}
+          href={href}
+          className="underline break-all cursor-pointer font-medium hover:opacity-80"
+          style={{ color: 'inherit' }}
+          onClick={(e) => {
+            e.preventDefault(); // Prevent default link behavior
+            e.stopPropagation(); // Prevent any parent click handlers
+            console.log('Opening URL in current tab:', href);
+            
+            // Check if it's a video call URL
+            if (href.includes('/call/')) {
+              // Store the current chat URL to return to after call
+              const currentChatUrl = window.location.href;
+              sessionStorage.setItem('returnToChat', currentChatUrl);
+              
+              // Navigate to the call page in the same tab
+              window.location.href = href;
+            } else {
+              // For other URLs, open in new tab
+              window.open(href, '_blank');
+            }
+          }}
+        >
+          {part}
+        </a>
+      );
+    }
+    return part;
+  });
 }
 
 const CustomMessageList = () => {
@@ -147,7 +259,7 @@ const CustomMessageList = () => {
   };
 
   return (
-    <div className="flex flex-col gap-2 px-4 py-2 overflow-y-auto h-[60vh]">
+    <div className="flex flex-col gap-2 px-4 py-2 overflow-y-auto h-[60vh] bg-base-100">
       {messages.map((msg, idx) => {
         const isSender = msg.user.id === authUser._id;
         const msgDate = new Date(msg.created_at);
@@ -172,7 +284,7 @@ const CustomMessageList = () => {
           <div key={msg.id || idx} className="w-full">
             {showDate && (
               <div className="flex justify-center my-2">
-                <span className="bg-gray-300 text-xs text-gray-700 px-3 py-1 rounded-full shadow">
+                <span className="bg-base-300 text-xs text-base-content px-3 py-1 rounded-full shadow">
                   {formatDate(msg.created_at)}
                 </span>
               </div>
@@ -184,23 +296,23 @@ const CustomMessageList = () => {
               `}
             >
               {/* Time above the message */}
-              <span className="text-xs text-gray-400 mb-1">
+              <span className="text-xs text-base-content/60 mb-1">
                 {formatTime(msg.created_at)}
               </span>
               {/* Message box with button inside */}
               <div
                 className={`
                   flex items-center rounded-lg px-3 py-2
-                  ${isSender ? "bg-blue-100" : "bg-gray-100"}
+                  ${isSender ? "bg-primary text-primary-content" : "bg-base-200 text-base-content"}
                 `}
               >
-                <span className="text-sm text-gray-800">
+                <span className="text-sm">
                   {isTranslating
                     ? linkify(msg.text)
                     : linkify(displayText)}
                 </span>
                 <button
-                  className="ml-2 p-1 hover:bg-gray-200 rounded"
+                  className="ml-2 p-1 hover:bg-base-content/10 rounded text-inherit"
                   onClick={() => handleTranslate(msg)}
                   title="Translate"
                   disabled={isTranslating}

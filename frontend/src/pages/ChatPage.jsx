@@ -87,6 +87,12 @@ const ChatPage = () => {
 
       channel.sendMessage({
         text: `I've started a video call. Join me here: ${callUrl}`,
+        // Add metadata to make the message more interactive
+        attachments: [{
+          type: 'video_call',
+          url: callUrl,
+          title: 'Join Video Call'
+        }]
       });
 
       toast.success("Video call link sent successfully!");

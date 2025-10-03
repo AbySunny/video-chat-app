@@ -8,8 +8,8 @@ const ThemeSelector = () => {
   return (
     <div className="dropdown dropdown-end">
       {/* DROPDOWN TRIGGER */}
-      <button tabIndex={0} className="btn btn-ghost btn-circle">
-        <PaletteIcon className="size-5" />
+      <button tabIndex={0} className="btn btn-ghost btn-circle text-base-content">
+        <PaletteIcon className="size-5 text-current" />
       </button>
 
       <div
@@ -26,12 +26,12 @@ const ThemeSelector = () => {
               ${
                 theme === themeOption.name
                   ? "bg-primary/10 text-primary"
-                  : "hover:bg-base-content/5"
+                  : "hover:bg-base-content/5 text-base-content"
               }
             `}
               onClick={() => setTheme(themeOption.name)}
             >
-              <PaletteIcon className="size-4" />
+              <PaletteIcon className="size-4 text-current" />
               <span className="text-sm font-medium">{themeOption.label}</span>
               {/* THEME PREVIEW COLORS */}
               <div className="ml-auto flex gap-1">

@@ -1,9 +1,10 @@
 import useAuthUser from "../hooks/useAuthUser";
-import { MapPinIcon, ShipWheelIcon } from "lucide-react";
+import { MapPinIcon, ShipWheelIcon, ArrowLeftIcon } from "lucide-react";
 import { LANGUAGES } from "../constants";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 const ProfilePage = () => {
   const { authUser } = useAuthUser();
+  const navigate = useNavigate();
 
   if (!authUser) {
     return (
@@ -17,6 +18,18 @@ const ProfilePage = () => {
     <div className="min-h-screen bg-base-100 flex items-center justify-center p-4">
       <div className="card bg-base-200 w-full max-w-3xl shadow-xl">
         <div className="card-body p-6 sm:p-8">
+          {/* Back Button */}
+          <div className="flex items-center mb-4">
+            <button 
+              onClick={() => navigate(-1)}
+              className="btn btn-ghost btn-sm"
+              title="Go back"
+            >
+              <ArrowLeftIcon className="size-4 mr-2" />
+              Back
+            </button>
+          </div>
+          
           <h1 className="text-2xl sm:text-3xl font-bold text-center mb-6">Your Profile</h1>
 
           {/* PROFILE PIC */}
